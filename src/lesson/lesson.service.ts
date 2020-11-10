@@ -6,8 +6,8 @@ import { Repository } from 'typeorm';
 import { v4 as uuidv4 } from 'uuid';
 
 import { Lesson } from './lesson.entity';
-import { CreateLessonInput } from './lesson.input';
-import { AssignStudentToLessonInput } from './assing-students-to-lesson.input';
+import { CreateLessonInput } from './create-lesson.input';
+import { AssignStudentToLessonInput } from './assign-students-to-lesson.input';
 
 @Injectable()
 export class LessonService {

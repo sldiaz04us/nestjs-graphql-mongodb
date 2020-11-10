@@ -9,8 +9,8 @@ import {
 
 import { LessonType } from './lesson.type';
 import { LessonService } from './lesson.service';
-import { CreateLessonInput } from './lesson.input';
-import { AssignStudentToLessonInput } from './assing-students-to-lesson.input';
+import { CreateLessonInput } from './create-lesson.input';
+import { AssignStudentToLessonInput } from './assign-students-to-lesson.input';
 import { Lesson } from './lesson.entity';
 import { StudentService } from '../student/student.service';
 
