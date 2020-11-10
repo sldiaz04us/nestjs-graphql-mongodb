@@ -7,6 +7,7 @@ import { v4 as uuidv4 } from 'uuid';
 
 import { Lesson } from './lesson.entity';
 import { CreateLessonInput } from './lesson.input';
+import { AssignStudentToLessonInput } from './assing-students-to-lesson.input';
 
 @Injectable()
 export class LessonService {
@@ -23,14 +24,22 @@ export class LessonService {
     }
 
     createLesson(createLessonInput: CreateLessonInput): Promise<Lesson> {
-        const { name, startDate, endDate } = createLessonInput;
+        const { name, startDate, endDate, students } = createLessonInput;
         const lesson = this.lessonRepository.create({
             id: uuidv4(),
             name,
             startDate,
-            endDate
+            endDate,
+            students
         });
 
+        return this.lessonRepository.save(lesson);
+    }
+
+    async assignStudentsToLesson(assignStudentsToLessonInput: AssignStudentToLessonInput): Promise<Lesson> {
+        const { lessonId, studentIds } = assignStudentsToLessonInput;
+        const lesson = await this.lessonRepository.findOne({ id: lessonId });
+        lesson.students = [...lesson.students, ...studentIds];
         return this.lessonRepository.save(lesson);
     }
 }

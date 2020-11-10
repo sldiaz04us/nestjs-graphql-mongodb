@@ -11,4 +11,7 @@ export class StudentType {
     @Field()
     lastname: string;
 
+    @Field(() => StudentType)
+    students: string[]
+
 }
